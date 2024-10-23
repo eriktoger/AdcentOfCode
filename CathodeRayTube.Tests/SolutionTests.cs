@@ -6,29 +6,30 @@ public class UnitTest1
     [Fact]
     public void Example()
     {
-        string fullPath = Path.GetFullPath("example.txt");
-        var answer = Solution.Solve(fullPath);
+        string filePath = "example.txt";
+        var solution = new Solution(filePath);
+        var answer = solution.Solve();
         Assert.Equal(13140, answer);
     }
 
     [Fact]
     public void PartOne()
     {
-        string fullPath = Path.GetFullPath("part1.txt");
-        var answer = Solution.Solve(fullPath);
+        string filePath = "part1.txt";
+        var solution = new Solution(filePath);
+        var answer = solution.Solve();
         Assert.Equal(17020, answer);
     }
-
 
     private static void CompareFiles(string inputFile, string outputFile, string solutionFile)
     {
 
         File.WriteAllText(outputFile, string.Empty);
-        Solution.Solve(inputFile, outputFile);
+        var solution = new Solution(inputFile, outputFile);
+        solution.Solve();
 
         var actualLines = File.ReadAllLines(outputFile);
         var expectedLines = File.ReadAllLines(solutionFile);
-
 
         Assert.Equal(expectedLines.Length, actualLines.Length);
 
@@ -42,9 +43,9 @@ public class UnitTest1
     [Fact]
     public void PartTwoExample()
     {
-        string inputPath = Path.GetFullPath("example.txt");
-        string outputPath = Path.GetFullPath("outputExample.txt");
-        string solutionPath = Path.GetFullPath("outputExampleSolution.txt");
+        string inputPath = "example.txt";
+        string outputPath = "outputExample.txt";
+        string solutionPath = "outputExampleSolution.txt";
         CompareFiles(inputPath, outputPath, solutionPath);
 
     }
@@ -52,9 +53,9 @@ public class UnitTest1
     [Fact]
     public void PartTwo()
     {
-        string inputPath = Path.GetFullPath("part1.txt");
-        string outputPath = Path.GetFullPath("output.txt");
-        string solutionPath = Path.GetFullPath("outputSolution.txt");
+        string inputPath = "part1.txt";
+        string outputPath = "output.txt";
+        string solutionPath = "outputSolution.txt";
         CompareFiles(inputPath, outputPath, solutionPath);
     }
 }
