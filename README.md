@@ -1,0 +1,3 @@
+### Commands
+
+dotnet test
